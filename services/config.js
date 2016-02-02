@@ -1,1 +1,1 @@
-exports.rootUrl = 'https://ios-server.herokuapp.com/';
+exports.rootUrl = 'https://ios-server.herokuapp.com';
