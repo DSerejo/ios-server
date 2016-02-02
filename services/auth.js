@@ -11,17 +11,20 @@ passport.use(new FacebookStrategy({
         callbackURL: config.rootUrl + "/auth/facebook/callback"
     },
     function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate('', function(err, user) {
-            if (err) { return done(err); }
-            done(null, user);
-        });
+        //User.findOrCreate('', function(err, user) {
+        //    if (err) { return done(err); }
+        //    done(null, user);
+        //});
     }
 ));
 var router = express.Router();
 router.get('/facebook',passport.authenticate('facebook'));
 
-router.get('/auth/facebook/callback',
+router.get('/facebook/callback',
     passport.authenticate('facebook', function(){
+        console.log(arguments);
+    },
+    function(){
         console.log(arguments);
     })
 );
