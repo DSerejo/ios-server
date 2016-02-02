@@ -1,1 +1,1 @@
-exports.rootUrl = 'https://kvrohmsftk.localtunnel.me';
+exports.rootUrl = 'https://ios-server.herokuapp.com/';
