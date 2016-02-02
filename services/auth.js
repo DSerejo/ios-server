@@ -21,12 +21,7 @@ var router = express.Router();
 router.get('/facebook',passport.authenticate('facebook'));
 
 router.get('/facebook/callback',
-    passport.authenticate('facebook', function(){
-        console.log(arguments);
-    },
-    function(){
-        console.log(arguments);
-    })
+    passport.authenticate('facebook', {successFlash: 'Welcome!' })
 );
 
 module.exports = router;
