@@ -16,7 +16,7 @@ router.post('/login',function(req,res,next){
     User.findOne({email:req.body.email},function (err, user) {
         passport.authenticate('local', function(err, user, info) {
             if (err) { return next(err); }
-            if (!user) { return res.status(500).send('Not registered'); }
+            if (!user) { return res.status(500).send(info); }
             req.logIn(user, function(err) {
                 if (err) { return next(err); }
                 return res.json({
