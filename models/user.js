@@ -8,7 +8,7 @@ var userSchema = new mongoose.Schema({
     name:String,
     last_name:String,
     accessToken:String,
-    email:{type: String,require:true, unique: true},
+    email:{type: String,require:true,unique:true},
     facebook: mongoose.Schema.Types.Mixed
 
 });

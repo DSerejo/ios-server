@@ -171,7 +171,9 @@ passport.use(new LocalStrategy({
 passport.use(new FacebookStrategy({
         clientID: config.facebookAppID,
         clientSecret: config.facebookSecret,
-        callbackURL: config.rootUrl + "/auth/facebook/callback"
+        callbackURL: config.rootUrl + "/auth/facebook/callback",
+        profileFields: ['id', 'emails', 'name']
+
     },
     function(accessToken, refreshToken, profile, done) {
         console.log('oi')
@@ -180,7 +182,7 @@ passport.use(new FacebookStrategy({
             if (err) { return done(err); }
 
             if (!user) {
-                usr = new User({ id:profile.id,provider:'facebook'});
+                usr = new User({ email:profile.emails[0].value,provider:'facebook'});
                 usr.save(function(err) {
                     if(err) {
                         console.log(err);
